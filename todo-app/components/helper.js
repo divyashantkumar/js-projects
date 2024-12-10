@@ -25,17 +25,21 @@ export function renderTodos() {
                                 <button type="button" class="editBtn btn btn-primary" onclick="sessionStorage.setItem('taskUpdateId', ${task.id})">
                                     Edit
                                 </button>
-                                <button class="btn btn-danger" id="deleteBtn">Delete</button>
+                                <button class="deleteBtn btn btn-danger" id="deleteBtn" onclick="sessionStorage.setItem('taskDeleteId', ${task.id})">Delete</button>
                             </span>
                         </li>`
         });
         todoList.innerHTML = liststr;
 
-        handleEditBttons();
+        handleEditButtons();
+        handleDeleteButton();
+    }
+    if(liststr == "") {
+        todoList.innerHTML = `<h5 class="text-primary">There is no task added</h5>`;
     }
 }
 
-function handleEditBttons() {
+function handleEditButtons() {
     document.querySelectorAll('.editBtn').forEach((btn) => {
         btn.addEventListener("click", (e) => {
             const todoInput = document.getElementById('todoInput');
@@ -56,7 +60,6 @@ function handleEditBttons() {
                 btn.setAttribute('class', 'btn btn-success mt-3 mb-3 me-3');
                 btn.innerText = 'Update Task';
                 submitBtn.insertAdjacentElement('beforebegin', btn);
-                
             }
             
             updateBtn = document.getElementById('updateBtn');
@@ -70,7 +73,7 @@ function handleEditBttons() {
                 });
                 
                 sessionStorage.removeItem('taskUpdateId');
-                window.open('#');
+                window.location.reload();
                 localStorage.setItem('tasks', JSON.stringify(tasks));
                 renderTodos();
             });
@@ -78,7 +81,24 @@ function handleEditBttons() {
     })
 }
 
+function handleDeleteButton() {
+    document.querySelectorAll('.deleteBtn').forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const id = sessionStorage.getItem('taskDeleteId');
+            const tasks = JSON.parse(localStorage.getItem('tasks'));
 
+            let updatedTasks = tasks.filter((item) => {
+                if(item.id != id) {
+                    return item;
+                }
+            });
+            
+            sessionStorage.removeItem('taskUpdateId');
+            localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+            renderTodos();
+        });
+    })
+}
 
 /**
  * Handles the submit event of the add task form.
@@ -123,26 +143,10 @@ export function addTask(newTask) {
         newList = [...newList, ...storedTasks]
     }
     localStorage.setItem("tasks", JSON.stringify(newList));
+    todoInput.value = "";
     renderTodos();
 }
 
 export function deleteTask(id) {
 
-}
-
-export function updateTaskFormHandler(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const todo = todoInput.value;
-
-    if (todo) {
-        const newTask = {
-            id: Date.now(),
-            text: todo,
-            completed: false,
-        };
-
-        addTask(newTask);
-    }
 }
