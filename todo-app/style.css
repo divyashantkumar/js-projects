@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color: #222; */
+    /* font-family: Arial, sans-serif; */
+}
+
+.container {
+    height: 100vh;
+}
+
+.container > div, .container .cardContainer {
+    height: 100%;
+}
+.container > .row, .container .cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardContainer .card {
+    width: 100%;
+}
+
+#todoInput {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#todoList {
+    overflow-y: scroll;
+    height: 300px;
+}
+
+/* Todo List  */
+.todoText {
+    white-space: nowrap;
+
+}
