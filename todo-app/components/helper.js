@@ -147,6 +147,3 @@ export function addTask(newTask) {
     renderTodos();
 }
 
-export function deleteTask(id) {
-
-}
