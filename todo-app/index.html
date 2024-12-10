@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./style.css">
 
     <!-- Eternal JavaScript -->
-     <script defer type="module" src="./script.js"></script>
+    <script type="module" src="./script.js" defer></script>
 </head>
 
 <body>
@@ -34,13 +34,54 @@
                             <button type="submit" id="submitBtn" class="btn btn-primary mt-3 mb-3">Add Task</button>
                         </form>
 
+
                         <div class="mt-3 mb-3 ">
                             <strong class="fw-bold fs-5">Task List</strong>
                         </div>
                         <!-- ToDo List -->
                         <ul class="list-group mt-3" id="todoList">
+                            <li class="todoItem list-group-item d-flex justify-content-between">
+                                <span class="todoText">task 1</span>
+                                <span style="width: 150px;">
+                                    <button type="button" id="editBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="m${task.id}">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-danger" id="deleteBtn">Delete</button>
+                                </span>
+                            </li>
                         </ul>
                     </div>
+
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="insertUpdateTaskModal('m1733818211691')" data-bs-target="#m1733818211691">
+                        Edit
+                    </button> -->
+
+                    <div id="modalContainer">
+                        <!-- <div class="modal fade" id="m1733818211691" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Update Task</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" class="form-control" id="todoInput"
+                                            placeholder="Enter a task">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" id="updateBtn" class="btn btn-primary mt-3 mb-3">Update
+                                            Task</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+
                 </div>
             </div>
         </div>
