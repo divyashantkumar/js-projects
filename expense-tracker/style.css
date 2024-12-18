@@ -38,4 +38,9 @@
 
 #expenseList {
     height: 300px;
+    overflow: scroll;
+}
+
+#expenseList::-webkit-scrollbar {
+    display: none;
 }
