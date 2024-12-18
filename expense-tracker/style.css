@@ -1,0 +1,41 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.root {
+    background-color: #272727;
+    height: 100vh;
+}
+
+.card {
+    border: solid 1px #525252;
+    background-color: #353535;
+}
+
+.card-header {    
+    border: solid 1px #525252;
+}
+
+.hide {
+    display: none;
+}
+
+.Show {
+    display: block;
+}
+
+
+
+
+.ExpenseListHeading {
+    padding-bottom: 2PX;
+    border-bottom: solid 1px #525252;
+}
+
+#expenseList {
+    height: 300px;
+}
